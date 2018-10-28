@@ -1,0 +1,2 @@
+defmodule MixDepsGet do
+end
