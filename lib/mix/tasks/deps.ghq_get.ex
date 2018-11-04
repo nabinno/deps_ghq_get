@@ -9,22 +9,20 @@ defmodule Mix.Tasks.Deps.GhqGet do
 
   ## Command line options
 
-    * `--no-archives-check` - does not check archives before running `ghq get` deps
+    * `--async` - run `ghq get` deps with using Task.async_stream
   """
 
   def run(args) do
-    unless "--no-archives-check" in args do
-      Mix.Task.run("archive.check", args)
-    end
+    {time, _} =
+      :timer.tc(fn ->
+        Mix.Project.get!()
 
-    Mix.Project.get!()
+        cond do
+          "--async" in args -> Mix.Dep.GhqGetter.all(true)
+          true -> Mix.Dep.GhqGetter.all()
+        end
+      end)
 
-    apps = Mix.Dep.GhqGetter.all()
-
-    if apps == [] do
-      Mix.shell().info("All dependencies up to date")
-    else
-      :ok
-    end
+    Mix.shell().info("== Ghq got in #{inspect(div(time, 100_000) / 10)}s")
   end
 end

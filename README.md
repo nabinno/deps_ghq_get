@@ -12,7 +12,7 @@ $ mix archive.install https://github.com/nabinno/deps_ghq_get/raw/master/archive
 ```elixir
 def deps do
   [
-    {:deps_ghq_get, "~> 0.1.1", only: :dev}
+    {:deps_ghq_get, "~> 0.1.2", only: :dev}
   ]
 end
 ```

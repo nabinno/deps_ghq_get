@@ -71,8 +71,9 @@ defmodule Mix.Tasks.Deps.GhqGetTest do
 
     test "does not get git repos by ghq" do
       in_fixture("no_mixfile", fn ->
-        exception = assert_raise Mix.Error, fn -> Mix.Tasks.Deps.GhqGet.run([]) end
-        assert Exception.message(exception) =~ "Command \"ghq get "
+        Mix.Tasks.Deps.GhqGet.run([])
+        message = "Command \"ghq get "
+        refute_received {:mix_shell, :info, [^message]}
       end)
     end
   end

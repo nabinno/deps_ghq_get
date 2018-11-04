@@ -1,7 +1,7 @@
 defmodule DepsGhqGet.MixProject do
   use Mix.Project
 
-  defp version, do: "0.1.1"
+  defp version, do: "0.1.2"
 
   def project do
     [

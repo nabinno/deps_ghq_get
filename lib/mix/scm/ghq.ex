@@ -47,6 +47,7 @@ defmodule Mix.SCM.Ghq do
   defp default_into() do
     case Mix.shell() do
       Mix.Shell.IO -> IO.stream(:stdio, :line)
+      Mix.Shell.Process -> IO.stream(:stdio, :line)
       _ -> nil
     end
   end
@@ -81,7 +82,7 @@ defmodule Mix.SCM.Ghq do
           Regex.named_captures(~r/^git:\/\/github.com\/(?<gh>.*).git$/, url)
 
         true ->
-          %{"gh" => ""}
+          %{"gh" => nil}
       end
 
     match_list["gh"]
