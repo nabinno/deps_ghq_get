@@ -5,7 +5,7 @@ project. You just type `mix do deps.get, deps.ghq_get`.
 ## Installations
 ### By archive.install
 ```sh
-$ mix archive.install https://github.com/nabinno/deps_ghq_get/raw/master/archives/deps_ghq_get-0.1.0.ez
+$ mix archive.install https://github.com/nabinno/deps_ghq_get/raw/master/archives/deps_ghq_get-0.1.2.ez
 ```
 
 ### By mix.exs
